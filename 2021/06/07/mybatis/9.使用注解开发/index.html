@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>my-test-articlec | 这是一个Blog</title>
+  <title>这是一个Blog</title>
 
   
     
@@ -693,7 +693,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/1.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -704,7 +704,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['my-test-articlec'],
+              strings: [''],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -737,7 +737,53 @@
         
       </div>
       <div class="post-content">
-        
+        <h1 id="9-使用注解开发"><a href="#9-使用注解开发" class="headerlink" title="9.使用注解开发"></a>9.使用注解开发</h1><h2 id="面向接口编程"><a href="#面向接口编程" class="headerlink" title="面向接口编程"></a>面向接口编程</h2><blockquote>
+<p>面向接口编程，根本原因在于，<strong>解耦，可拓展，提高复用，分层开发中，上层不用管下层的具体实现，大家都遵守共同的标准，<br>使得开发变得容易，规范性更好</strong></p>
+</blockquote>
+<h2 id="使用java注解开发"><a href="#使用java注解开发" class="headerlink" title="使用java注解开发"></a>使用java注解开发</h2><blockquote>
+<p>1.新建一个接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper2</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Select(&quot;select *from user&quot;)</span></span><br><span class="line">        <span class="function">List&lt;User&gt; <span class="title">getUsers</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.在mybatis-donfig.xml文件中注册</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;mapper class=&quot;dao.UserMapper&quot;/&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        &lt;package name=&quot;dao&quot;/&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;dao2.UserMapper2&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.运行</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@org</span>.junit.<span class="function">Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AnnoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserMapper2 mapper2 = sqlSession.getMapper(UserMapper2.class);</span><br><span class="line">    List&lt;User&gt; userList =  mapper2.getUsers();</span><br><span class="line">    <span class="keyword">for</span> (User user: userList) &#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用注解实现增删改查"><a href="#使用注解实现增删改查" class="headerlink" title="使用注解实现增删改查"></a>使用注解实现增删改查</h2><h5 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h5><blockquote>
+<p>在UserMapper接口写下如下代码<br><strong>当参数只有一个的时候，就不用在方法的形参中写入@Param(“”)注解，多个参数的时候都要写</strong><br><strong>并且这个在形参中的注解参数会优先级更高，如果注解为@Param( “uid”)，则@Select中的语句要改成id=#{uid)</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如方法存在多个参数 所有的参数面前必须加上@Param(&quot;id&quot;)注解,@Param(&quot;&quot;)也适合多个参数，</span></span><br><span class="line"><span class="meta">@Select(&quot;select *from user where id=#&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function">User <span class="title">getUserByID</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> <span class="keyword">int</span> id)</span></span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@org</span>.junit.<span class="function">Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AnnoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserMapper2 mapper2 = sqlSession.getMapper(UserMapper2.class);</span><br><span class="line">    User userbyID = mapper2.getUserByID(<span class="number">1</span>);</span><br><span class="line">    System.out.println(userbyID);</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h5><blockquote>
+<p>在接口中写下如下代码</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Insert(&quot;insert into user(id,name,pwd) values(#&#123;id&#125;,#&#123;name&#125;,#&#123;pwd&#125;)&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">addUser</span><span class="params">(User user)</span></span>;  </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@org</span>.junit.<span class="function">Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AnnoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserMapper2 mapper2 = sqlSession.getMapper(UserMapper2.class);</span><br><span class="line">    User user = <span class="keyword">new</span> User(<span class="number">6</span>,<span class="string">&quot;张旺&quot;</span>,<span class="string">&quot;113143&quot;</span>);</span><br><span class="line">    mapper2.addUser(user);</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行之后发现并没有在数据库中增加一条字段，这是因为没有提交导致的，所以要设置提交，查看opensession()方法<br><img "" class="lazyload placeholder" data-original="_v_images/20210517100912226_17463.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>有重载的函数，boolean autoCommit参数表示是否自动提交，所以在</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> sqlSessionFactory.openSession();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这段代码中传入一下参数true即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> sqlSessionFactory.openSession(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>再次运行就有一条新纪录了</p>
+</blockquote>
+<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Delete(&quot;delete from user where id=#&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">deleteUser</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Update(&quot;update user set name=#&#123;name&#125;,pwd=#&#123;pwd&#125; where id = #&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(User user)</span></span>;</span><br></pre></td></tr></table></figure>
       </div>
       
         <div class="copyright">
@@ -747,7 +793,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/06/07/my-test-articlec/" target="_blank" title="my-test-articlec">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/my-test-articlec/</a>
+    <a href="/2021/06/07/mybatis/9.使用注解开发/" target="_blank" title="">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/mybatis/9.使用注解开发/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -765,41 +811,26 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
-      background-position: center center;">
-    </div>
-    <a href="/2021/06/07/mybatis/1.Mybatis/" class="post-nav-link">
-      <div class="title">
-        <i class="fa fa-angle-left"></i> 上一篇:
-        <div></div>
-      </div>
-      
-      <!-- <div class="content">
-        1.Mybatis什么是MyBatis
-是一款优秀的持久层框架，  
-
-持久化
-持久化就是将程序的数据在持久状态和瞬时状
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/hello-world/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/8.%E5%88%86%E9%A1%B5/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Hello World</div>
+        <div></div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        8.分页
+为了减少数据的处理量
+
+使用Limit数据分页
+语法如下：
+
+1select *from user limit
       </div> -->
     </a>
   </div>

@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>my-test-articlec | 这是一个Blog</title>
+  <title>这是一个Blog</title>
 
   
     
@@ -693,7 +693,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/1.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -704,7 +704,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['my-test-articlec'],
+              strings: [''],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -737,7 +737,20 @@
         
       </div>
       <div class="post-content">
-        
+        <h1 id="17-Ehcache"><a href="#17-Ehcache" class="headerlink" title="17.Ehcache"></a>17.Ehcache</h1><blockquote>
+<p>EhCache 是一个纯Java的进程内缓存框架，具有快速、精干等特点，<br>是Hibernate中默认CacheProvider。Ehcache是一种广泛使用的开源Java分布式缓存。<br>主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，<br>缓存加载器,缓存扩展,缓存异常处理程序,一个gzip缓存servlet过滤器,支持REST和SOAP api等特点。<br>Spring 提供了对缓存功能的抽象：即允许绑定不同的缓存解决方案（如Ehcache），但本身不直接提供缓存功能的实现。<br>它支持注解方式使用缓存，非常方便。</p>
+</blockquote>
+<h2 id="Mybatis中使用自定义缓存"><a href="#Mybatis中使用自定义缓存" class="headerlink" title="Mybatis中使用自定义缓存"></a>Mybatis中使用自定义缓存</h2><blockquote>
+<p>在Mybatis中可以使用自定义的缓存，也可以使用使用第三方缓存。就比如上面的Ehcache。<br>在maven中导入这个包</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.ehcache/ehcache --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.ehcache<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ehcache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.9.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Mapper.xml中开启缓存</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">&quot;org.ehcache.EhcacheCache&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Redis做缓存"><a href="#Redis做缓存" class="headerlink" title="Redis做缓存"></a>Redis做缓存</h2><blockquote>
+<p>K-V键值对</p>
+</blockquote>
+
       </div>
       
         <div class="copyright">
@@ -747,7 +760,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/06/07/my-test-articlec/" target="_blank" title="my-test-articlec">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/my-test-articlec/</a>
+    <a href="/2021/06/07/mybatis/17.Ehcache/" target="_blank" title="">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/mybatis/17.Ehcache/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -770,18 +783,14 @@
     <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/mybatis/1.Mybatis/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/2.Mybatis%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
         <div></div>
       </div>
       
       <!-- <div class="content">
-        1.Mybatis什么是MyBatis
-是一款优秀的持久层框架，  
-
-持久化
-持久化就是将程序的数据在持久状态和瞬时状
+        2.Mybatis的第一个程序pojo12345678910111213141516171819202122232425
       </div> -->
     </a>
   </div>
@@ -790,16 +799,17 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/hello-world/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/16.%E7%BC%93%E5%AD%98/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Hello World</div>
+        <div></div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        16.缓存
+缓存，在Mybatis中，我们使用内存资源作为缓存资源。一次查询的结果，给他暂存在一个可以直接取到的地方。我
       </div> -->
     </a>
   </div>

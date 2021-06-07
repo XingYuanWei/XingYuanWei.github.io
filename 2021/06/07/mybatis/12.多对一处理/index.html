@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>my-test-articlec | 这是一个Blog</title>
+  <title>这是一个Blog</title>
 
   
     
@@ -693,7 +693,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/1.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -704,7 +704,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['my-test-articlec'],
+              strings: [''],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -737,7 +737,37 @@
         
       </div>
       <div class="post-content">
-        
+        <h1 id="12-多对一处理"><a href="#12-多对一处理" class="headerlink" title="12.多对一处理"></a>12.多对一处理</h1><blockquote>
+<p>创建mysql的表</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br><span class="line">use mybatis;</span><br><span class="line"></span><br><span class="line">create table teacher(id int(10) not null primary key,</span><br><span class="line">                    name varchar(30) default null</span><br><span class="line">) engine = INNODB,default charset = utf8;</span><br><span class="line"></span><br><span class="line">insert into teacher(id,name) values (1,&quot;秦老师&quot;);</span><br><span class="line">create table student(id int(10) not null primary key,</span><br><span class="line">                     name varchar(30) default null,</span><br><span class="line">                     tid int(10) default NULL,</span><br><span class="line">                     Key fktid(tid),</span><br><span class="line">                     CONSTRAINT `fktid` FOREIGN KEY (`tid`) REFERENCES `teacher` (`id`)</span><br><span class="line">)engine = INNODB,default charset = utf8;</span><br><span class="line"></span><br><span class="line">INSERT INTO `student` (`id`, `name`, `tid`) VALUES (1, &quot;小明&quot;, 1);</span><br><span class="line">INSERT INTO `student` (`id`, `name`, `tid`) VALUES (2, &quot;小红&quot;, 1);</span><br><span class="line">INSERT INTO `student` (`id`, `name`, `tid`) VALUES (3, &quot;小张&quot;, 1);</span><br><span class="line">INSERT INTO `student` (`id`, `name`, `tid`) VALUES (4, &quot;小李&quot;, 1);</span><br><span class="line">INSERT INTO `student` (`id`, `name`, `tid`) VALUES (5, &quot;小王&quot;, 1);</span><br><span class="line">show tables;</span><br><span class="line"></span><br><span class="line">select *  from student;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Student类与Teacher类"><a href="#Student类与Teacher类" class="headerlink" title="Student类与Teacher类"></a>Student类与Teacher类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.type.Alias;</span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Alias(&quot;student&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    String name;</span><br><span class="line">    Teacher teacher;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.type.Alias;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Alias(&quot;teacher&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="查询学生相对应的老师"><a href="#查询学生相对应的老师" class="headerlink" title="查询学生相对应的老师"></a>查询学生相对应的老师</h2><h5 id="1-按查询嵌套处理的方式"><a href="#1-按查询嵌套处理的方式" class="headerlink" title="1.按查询嵌套处理的方式"></a>1.按查询嵌套处理的方式</h5><p>StudentMapper与TeacherMapper同之前的配置一样，要配置好，这里不过多的赘述。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapper</span> </span>&#123;</span><br><span class="line">    <span class="function">List&lt;Student&gt; <span class="title">getStudent</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在StudentMapper.xml文件中间配置好</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;dao3.StudentMapper&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    思路</span></span><br><span class="line"><span class="comment">    1.查询所有学生的信息</span></span><br><span class="line"><span class="comment">    2.根据查询出来的学生的tid，寻找对应的老师</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getStudent&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;studentTeacher&quot;</span>&gt;</span></span><br><span class="line">         select *from mybatis.student</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;studentTeacher&quot;</span> <span class="attr">type</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span> <span class="attr">column</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        复杂的属性或者说一个对象，需要单独的处理</span></span><br><span class="line"><span class="comment">            对象使用：association</span></span><br><span class="line"><span class="comment">            集合使用：collection</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;teacher&quot;</span> <span class="attr">column</span>=<span class="string">&quot;tid&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;pojo.Teacher&quot;</span> <span class="attr">select</span>=<span class="string">&quot;getTeacher&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getTeacher&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;pojo.Teacher&quot;</span>&gt;</span></span><br><span class="line">        select *from mybatis.teacher where id = #&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要十分的注意，由于Teacher是一个对象，Student中有一个Teacher对象，对于对象的印射要使用resultMap，并且使用association关联。<br>并且设置好javaType与属性。还有select选项也是要有与之对应的select查询语句如上面的代码<br>测试之后，进入学生所对应老师将会打印得出</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);</span><br><span class="line">    List&lt;Student&gt; list = mapper.getStudent();</span><br><span class="line">    <span class="keyword">for</span> (Student student:list)&#123;</span><br><span class="line">        System.out.println(student);</span><br><span class="line">    &#125;</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Student(id=1, name=小明, teacher=Teacher(id=1, name=秦老师))<br>Student(id=2, name=小红, teacher=Teacher(id=1, name=秦老师))<br>Student(id=3, name=小张, teacher=Teacher(id=1, name=秦老师))<br>Student(id=4, name=小李, teacher=Teacher(id=1, name=秦老师))<br>Student(id=5, name=小王, teacher=Teacher(id=1, name=秦老师))  </p>
+</blockquote>
+<h5 id="2-按结果嵌套查询"><a href="#2-按结果嵌套查询" class="headerlink" title="2.按结果嵌套查询"></a>2.按结果嵌套查询</h5><blockquote>
+<p>如果使用结果的嵌套查询，那么就可以一次性的把查询语句写完整，不需要分多个部分。使得了更加简洁</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    方法二--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getStudent2&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;StudentTeacher2&quot;</span>&gt;</span></span><br><span class="line">    select s.id sid,s.name sname,t.name tname</span><br><span class="line">    from student s,teacher t where s.tid=t.id</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;StudentTeacher2&quot;</span> <span class="attr">type</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> <span class="attr">column</span>=<span class="string">&quot;sid&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span> <span class="attr">column</span>=<span class="string">&quot;sname&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;teacher&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;teacher&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span> <span class="attr">column</span>=<span class="string">&quot;tname&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这种方式与第一种方式的相比，让人更好的理解，更加的符合逻辑。</p>
+</blockquote>
+
       </div>
       
         <div class="copyright">
@@ -747,7 +777,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/06/07/my-test-articlec/" target="_blank" title="my-test-articlec">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/my-test-articlec/</a>
+    <a href="/2021/06/07/mybatis/12.多对一处理/" target="_blank" title="">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/mybatis/12.多对一处理/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -770,18 +800,14 @@
     <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/mybatis/1.Mybatis/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/13.%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%A4%84%E7%90%86/" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
         <div></div>
       </div>
       
       <!-- <div class="content">
-        1.Mybatis什么是MyBatis
-是一款优秀的持久层框架，  
-
-持久化
-持久化就是将程序的数据在持久状态和瞬时状
+        一对多处理方法一 按结果嵌套查询step1.实体类123456789101112131415package pojo;i
       </div> -->
     </a>
   </div>
@@ -790,16 +816,17 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/hello-world/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/11.Lombok/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Hello World</div>
+        <div></div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        11.Lombok
+Lombok是一个Java库，一个插件，一个构件工具。只需要在class上添加注解，就不用写sett
       </div> -->
     </a>
   </div>

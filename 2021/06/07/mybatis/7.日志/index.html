@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>my-test-articlec | 这是一个Blog</title>
+  <title>这是一个Blog</title>
 
   
     
@@ -693,7 +693,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/1.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -704,7 +704,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['my-test-articlec'],
+              strings: [''],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -737,7 +737,29 @@
         
       </div>
       <div class="post-content">
-        
+        <h1 id="7-日志"><a href="#7-日志" class="headerlink" title="7.日志"></a>7.日志</h1><blockquote>
+<h2 id="日志工厂"><a href="#日志工厂" class="headerlink" title="日志工厂"></a>日志工厂</h2><p>如果数据操作出现了异常，我们需要排错，日志就是最好的一个助手。<br>logImpl，指定 MyBatis 所用日志的具体实现，未指定时将自动查找。<br>SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING<br>在Mybatis中具体使用哪个日志实现，在设置中设定。<br>STDOUT_LOGGING标准日志输出。</p>
+</blockquote>
+<h2 id="配置日志"><a href="#配置日志" class="headerlink" title="配置日志"></a>配置日志</h2><blockquote>
+<p><setting>中配置日志。在mybatis-config中配置这个标签。另外这个<setting>配置要写到第三个位置。</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;STDOUT_LOGGING&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个setting位置不能错，name的值为logImpl时决不能写错，value为STDOUT_LONGGING不能多空格或其他字符。<br><img "" class="lazyload placeholder" data-original="_v_images/20210513112031857_19978.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>这样查询的时候就会有日志输出</p>
+</blockquote>
+<h2 id="使用Log4j"><a href="#使用Log4j" class="headerlink" title="使用Log4j"></a>使用Log4j</h2><blockquote>
+<p>Log4j是Apache的一个开源项目，通过使用Log4j，我们可以控制日志信息输送的目的地是控制台，文件，GUI组件。<br>我们也可以控制每一条日志的输出格式<br>通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程<br>通过一个配置文件来灵活地进行配置，而不需要修改应用的代码</p>
+</blockquote>
+<h5 id="1-通过maven导入包"><a href="#1-通过maven导入包" class="headerlink" title="1.通过maven导入包"></a>1.通过maven导入包</h5><blockquote>
+</blockquote>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-在resources包下新建一个log4j-properties文件"><a href="#2-在resources包下新建一个log4j-properties文件" class="headerlink" title="2. 在resources包下新建一个log4j.properties文件"></a>2. 在resources包下新建一个log4j.properties文件</h5><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">log4j.rootLogger</span>=<span class="string">DEBUG,console,dailyFile,im</span></span><br><span class="line"><span class="meta">log4j.additivity.org.apache</span>=<span class="string">true</span></span><br><span class="line"><span class="comment"># 控制台(console)</span></span><br><span class="line"><span class="meta">log4j.appender.console</span>=<span class="string">org.apache.log4j.ConsoleAppender</span></span><br><span class="line"><span class="meta">log4j.appender.console.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="meta">log4j.appender.console.ImmediateFlush</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.console.Target</span>=<span class="string">System.err</span></span><br><span class="line"><span class="meta">log4j.appender.console.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.console.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br><span class="line"><span class="comment"># 日志文件(logFile)</span></span><br><span class="line"><span class="meta">log4j.appender.logFile</span>=<span class="string">org.apache.log4j.FileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.logFile.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="meta">log4j.appender.logFile.ImmediateFlush</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.logFile.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.logFile.File</span>=<span class="string">D:/logs/log.log4j</span></span><br><span class="line"><span class="meta">log4j.appender.logFile.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.logFile.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br><span class="line"><span class="comment"># 回滚文件(rollingFile)</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile</span>=<span class="string">org.apache.log4j.RollingFileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.ImmediateFlush</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.File</span>=<span class="string">D:/logs/log.log4j</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.MaxFileSize</span>=<span class="string">200KB</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.MaxBackupIndex</span>=<span class="string">50</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.rollingFile.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br><span class="line"><span class="comment"># 定期回滚日志文件(dailyFile)</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile</span>=<span class="string">org.apache.log4j.DailyRollingFileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile.ImmediateFlush</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile.File</span>=<span class="string">D:/logs/log.log4j</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile.DatePattern</span>=<span class="string">&#x27;.&#x27;yyyy-MM-dd</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.dailyFile.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br><span class="line"><span class="comment"># 应用于socket</span></span><br><span class="line"><span class="meta">log4j.appender.socket</span>=<span class="string">org.apache.log4j.RollingFileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.socket.RemoteHost</span>=<span class="string">localhost</span></span><br><span class="line"><span class="meta">log4j.appender.socket.Port</span>=<span class="string">5001</span></span><br><span class="line"><span class="meta">log4j.appender.socket.LocationInfo</span>=<span class="string">true</span></span><br><span class="line"><span class="comment"># Set up for Log Factor 5</span></span><br><span class="line"><span class="meta">log4j.appender.socket.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.socket.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br><span class="line"><span class="comment"># Log Factor 5 Appender</span></span><br><span class="line"><span class="meta">log4j.appender.LF5_APPENDER</span>=<span class="string">org.apache.log4j.lf5.LF5Appender</span></span><br><span class="line"><span class="meta">log4j.appender.LF5_APPENDER.MaxNumberOfRecords</span>=<span class="string">2000</span></span><br><span class="line"><span class="comment"># 发送日志到指定邮件</span></span><br><span class="line"><span class="meta">log4j.appender.mail</span>=<span class="string">org.apache.log4j.net.SMTPAppender</span></span><br><span class="line"><span class="meta">log4j.appender.mail.Threshold</span>=<span class="string">FATAL</span></span><br><span class="line"><span class="meta">log4j.appender.mail.BufferSize</span>=<span class="string">10</span></span><br><span class="line"><span class="meta">log4j.appender.mail.From</span> = <span class="string">xxx@mail.com</span></span><br><span class="line"><span class="meta">log4j.appender.mail.SMTPHost</span>=<span class="string">mail.com</span></span><br><span class="line"><span class="meta">log4j.appender.mail.Subject</span>=<span class="string">Log4J Message</span></span><br><span class="line"><span class="meta">log4j.appender.mail.To</span>= <span class="string">xxx@mail.com</span></span><br><span class="line"><span class="meta">log4j.appender.mail.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.mail.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br><span class="line"><span class="comment"># 应用于数据库</span></span><br><span class="line"><span class="meta">log4j.appender.database</span>=<span class="string">org.apache.log4j.jdbc.JDBCAppender</span></span><br><span class="line"><span class="meta">log4j.appender.database.URL</span>=<span class="string">jdbc:mysql://localhost:3306/test</span></span><br><span class="line"><span class="meta">log4j.appender.database.driver</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="meta">log4j.appender.database.user</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">log4j.appender.database.password</span>=<span class="string"></span></span><br><span class="line"><span class="meta">log4j.appender.database.sql</span>=<span class="string">INSERT INTO LOG4J (Message) VALUES(&#x27;=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n&#x27;)</span></span><br><span class="line"><span class="meta">log4j.appender.database.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.database.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 自定义Appender</span></span><br><span class="line"><span class="meta">log4j.appender.im</span> = <span class="string">net.cybercorlin.util.logger.appender.IMAppender</span></span><br><span class="line"><span class="meta">log4j.appender.im.host</span> = <span class="string">mail.cybercorlin.net</span></span><br><span class="line"><span class="meta">log4j.appender.im.username</span> = <span class="string">username</span></span><br><span class="line"><span class="meta">log4j.appender.im.password</span> = <span class="string">password</span></span><br><span class="line"><span class="meta">log4j.appender.im.recipient</span> = <span class="string">corlin@cybercorlin.net</span></span><br><span class="line"><span class="meta">log4j.appender.im.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.im.layout.ConversionPattern</span>=<span class="string">[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-使用log4j"><a href="#3-使用log4j" class="headerlink" title="3.使用log4j"></a>3.使用log4j</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试Log4j</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLog4j</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//1.从Apache中导包 创建Logger对象</span></span><br><span class="line">    Logger logger = Logger.getLogger(Main.class);</span><br><span class="line">    logger.info(<span class="string">&quot;info:进入了testing&quot;</span>);</span><br><span class="line">    logger.debug(<span class="string">&quot;debug:进入debug&quot;</span>);</span><br><span class="line">    logger.error(<span class="string">&quot;error:进入error&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行之后将要输出</p>
+</blockquote>
+
       </div>
       
         <div class="copyright">
@@ -747,7 +769,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/06/07/my-test-articlec/" target="_blank" title="my-test-articlec">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/my-test-articlec/</a>
+    <a href="/2021/06/07/mybatis/7.日志/" target="_blank" title="">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/mybatis/7.日志/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -770,18 +792,20 @@
     <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/mybatis/1.Mybatis/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/8.%E5%88%86%E9%A1%B5/" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
         <div></div>
       </div>
       
       <!-- <div class="content">
-        1.Mybatis什么是MyBatis
-是一款优秀的持久层框架，  
+        8.分页
+为了减少数据的处理量
 
-持久化
-持久化就是将程序的数据在持久状态和瞬时状
+使用Limit数据分页
+语法如下：
+
+1select *from user limit
       </div> -->
     </a>
   </div>
@@ -790,16 +814,19 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/hello-world/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/6.ResultMap%E7%BB%93%E6%9E%9C%E9%9B%86%E5%8D%B0%E5%B0%84/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Hello World</div>
+        <div></div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        6.ResultMap结果集印射解决Bean对象中的属性名和数据库中字段名不一致的问题
+比如，在数据库中建立的是
+
+12
       </div> -->
     </a>
   </div>

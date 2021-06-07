@@ -1139,266 +1139,9 @@
 
 </style>
 
-  <div class="motto">
-      <h3 class="motto-title">座右铭</h3>
-      <div class="motto-content">
-        <p>
-          沉淀后我愿意做个温暖的人，有自己的喜好，有自己的原则，有自己的信仰，不急功近利，不浮夸轻薄。宠辱不惊，淡定安逸，心静如水，不忘初心，方得始终。——凌茜  
-        </p> 
-      </div>
-  </div>
-
-
-<style>
-  .index-notice-content {
-    margin-top: 10px;
-  }
-  .warp {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .index-notice-content__ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-  }
-  .index-notice-content__ul li,
-  .index-notice-content__ul a {
-    display: block;
-    height: 30px;
-    line-height: 30px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 15px;
-  }
-  .index-notice-content__title {
-    flex: 1;
-    overflow: hidden;
-  }
-  .index-notice-content__title a,
-  .index-notice-content__title span {
-    overflow: hidden;
-    display: block;
-    text-overflow:ellipsis; 
-    white-space: nowrap;
-    height: 100%;
-    width: 100%;
-    color: #000;
-  }
-  .index-notice-content__title a:hover,
-  .index-notice-content__title span:hover {
-    text-decoration: underline;
-  }
-  .index-notice-content__date {
-    min-width: 80px;
-    margin-left: 5px;
-    color: #000;
-  }
-</style>
-<div class="index-notice" id="appIndexNotice">
-    <h3>
-      <i class="fa fa-bullhorn index-notice-icon"></i>公告
-    </h3>
-    <div class="index-notice-content">
-      
-      <vue-seamless-scroll
-        :data="listData"
-        :class-option="classOption"
-        class="warp"
-        style="height: 180px"
-      >
-        <ul class="index-notice-content__ul">
-          
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <a href="/archives" title="#博客更新到2.0了" style="color:red">
-                      #博客更新到2.0了
-                    </a>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="color:red">
-                    2021-04-28
-                  </div>
-                
-              
-            </li>
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <a target="_blank" rel="noopener" href="http://baidu.com" title="#新增 轮播图支持三种模式了，功能也增强了 ~" style="color:red">
-                      #新增 轮播图支持三种模式了，功能也增强了 ~
-                    </a>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="color:red">
-                    2021-04-28
-                  </div>
-                
-              
-            </li>
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <a target="_blank" rel="noopener" href="http://baidu.com" title="#新增 支持二级导航" style="color:blue">
-                      #新增 支持二级导航
-                    </a>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="color:blue">
-                    2021-04-28
-                  </div>
-                
-              
-            </li>
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <a target="_blank" rel="noopener" href="http://baidu.com" title="#新增 归档，分类等页面头部图片位置可以设置为视频 ~" style="color:#42b983">
-                      #新增 归档，分类等页面头部图片位置可以设置为视频 ~
-                    </a>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="color:#42b983">
-                    2021-04-28
-                  </div>
-                
-              
-            </li>
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <a target="_blank" rel="noopener" href="http://baidu.com" title="#新增 头部导航可以设置为在顶部透明，并且可以任意设置背景颜色了 ~" style="">
-                      #新增 头部导航可以设置为在顶部透明，并且可以任意设置背景颜色了 ~
-                    </a>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="">
-                    2021-04-28
-                  </div>
-                
-              
-            </li>
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <a target="_blank" rel="noopener" href="http://baidu.com" title="#新增 首页增加了座右铭和公告栏目 ~" style="">
-                      #新增 首页增加了座右铭和公告栏目 ~
-                    </a>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="">
-                    2021-04-28
-                  </div>
-                
-              
-            </li>
-           
-        </ul>
-      </vue-seamless-scroll>
-    </div>
-</div>
-<script src="/js/vue-seamless-scroll/index.js"></script>
-
-<!-- 滚动插件采用 vue-seamless-scroll
-  https://chenxuan0000.github.io/vue-seamless-scroll/zh/guide/06-singleStop.html 
--->
-
-<script>
-  let seamless = JSON.parse('false');
-  seamless = seamless ? 0 : 30;
-  let listData = '[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]';
-  listData = listData.split(',');
-  var vm = new Vue({
-    el: '#appIndexNotice',
-    data: {
-      listData: listData,
-      moveNum: 2,
-      classOption: {
-        singleHeight: seamless,
-        limitMoveNum: listData.length
-      },
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-    },
-    created() {
-      this.moveNum = parseInt(this.listData.length);
-    }
-  })
-</script>
 
 
 
-
-
-
-<div class="topArticle" data-aos="fade-up">
-	<h3><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>推荐文章</h3>
-	<div class="articles">
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-	</div>
-</div>
 
 
 
@@ -1413,7 +1156,7 @@
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/9.%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/"></a>
+            <a class="post-title-link" href="/2021/06/07/mybatis/15.mybatis%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1426,30 +1169,25 @@
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/9.%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/mybatis/15.mybatis%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            9.使用注解开发面向接口编程
-面向接口编程，根本原因在于，解耦，可拓展，提高复用，分层开发中，上层不用管下层的具体实现，大家都遵守共同的标准，使得开发变得容易，规范性更好
-
-使用java注解开发
-1.新建一个接口
-
-123456    im
+            15.mybatis常用标签choose,when,otherwise
+有时候，我们不想使用所有的条件，而只是想从多个条件中选择一个使用。针对这种情况，MyBatis 提供了 choose 元素，它有点像 Java 中的 switch 语句
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/9.%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/">
+          <a href="/2021/06/07/mybatis/15.mybatis%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/">
             <i class="iconfont iconmore" style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/9.%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/mybatis/15.mybatis%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1464,7 +1202,7 @@
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/8.%E5%88%86%E9%A1%B5/"></a>
+            <a class="post-title-link" href="/2021/06/07/mybatis/14.%E5%8A%A8%E6%80%81SQL/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1477,31 +1215,27 @@
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/8.%E5%88%86%E9%A1%B5/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/mybatis/14.%E5%8A%A8%E6%80%81SQL/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            8.分页
-为了减少数据的处理量
+            14.动态SQL
+动态SQL就是根据不同的条件，生成不同的SQL语句，这是Mybatis中强大的功能
 
-使用Limit数据分页
-语法如下：
-
-1select *from user limit startIndex,pageSize
-1例如“select *from user limit 0,2  #表示每页显
+环境搭建1.实体类1234567891011121314151617package pojo;import lombok.Data;im
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/8.%E5%88%86%E9%A1%B5/">
+          <a href="/2021/06/07/mybatis/14.%E5%8A%A8%E6%80%81SQL/">
             <i class="iconfont iconmore" style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/8.%E5%88%86%E9%A1%B5/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/mybatis/14.%E5%8A%A8%E6%80%81SQL/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1516,7 +1250,7 @@
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/7.%E6%97%A5%E5%BF%97/"></a>
+            <a class="post-title-link" href="/2021/06/07/mybatis/13.%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%A4%84%E7%90%86/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1529,25 +1263,24 @@
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/7.%E6%97%A5%E5%BF%97/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/mybatis/13.%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%A4%84%E7%90%86/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            7.日志
-日志工厂如果数据操作出现了异常，我们需要排错，日志就是最好的一个助手。logImpl，指定 MyBatis 所用日志的具体实现，未指定时将自动查找。SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | CO
+            一对多处理方法一 按结果嵌套查询step1.实体类123456789101112131415package pojo;import lombok.Data;import org.apache.ibatis.type.Alias;import
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/7.%E6%97%A5%E5%BF%97/">
+          <a href="/2021/06/07/mybatis/13.%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%A4%84%E7%90%86/">
             <i class="iconfont iconmore" style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/7.%E6%97%A5%E5%BF%97/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/mybatis/13.%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%A4%84%E7%90%86/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1562,7 +1295,7 @@
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/6.ResultMap%E7%BB%93%E6%9E%9C%E9%9B%86%E5%8D%B0%E5%B0%84/"></a>
+            <a class="post-title-link" href="/2021/06/07/mybatis/12.%E5%A4%9A%E5%AF%B9%E4%B8%80%E5%A4%84%E7%90%86/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1575,27 +1308,27 @@
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/6.ResultMap%E7%BB%93%E6%9E%9C%E9%9B%86%E5%8D%B0%E5%B0%84/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/mybatis/12.%E5%A4%9A%E5%AF%B9%E4%B8%80%E5%A4%84%E7%90%86/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            6.ResultMap结果集印射解决Bean对象中的属性名和数据库中字段名不一致的问题
-比如，在数据库中建立的是
+            12.多对一处理
+创建mysql的表
 
-12345678910111213141516171819202122232425262728293031323334353
+1234567891011121314151617181920212223show databases;use mybatis;create table teacher(id int(10) not 
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/6.ResultMap%E7%BB%93%E6%9E%9C%E9%9B%86%E5%8D%B0%E5%B0%84/">
+          <a href="/2021/06/07/mybatis/12.%E5%A4%9A%E5%AF%B9%E4%B8%80%E5%A4%84%E7%90%86/">
             <i class="iconfont iconmore" style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/6.ResultMap%E7%BB%93%E6%9E%9C%E9%9B%86%E5%8D%B0%E5%B0%84/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/mybatis/12.%E5%A4%9A%E5%AF%B9%E4%B8%80%E5%A4%84%E7%90%86/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1610,7 +1343,7 @@
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/5.%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"></a>
+            <a class="post-title-link" href="/2021/06/07/mybatis/11.Lombok/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1623,30 +1356,27 @@
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/5.%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/mybatis/11.Lombok/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            作用域和生命周期
-生命周期和作用域是至关重要的，因为错误的使用会导致非常严重的并发问题。
+            11.Lombok
+Lombok是一个Java库，一个插件，一个构件工具。只需要在class上添加注解，就不用写setter getter，equals，toString等方法。
 
-SqlSessionFactoryBuilder
-1.一旦创建了SqlSessionFactory，就不需要他了2.局部变量    
-
-SqlSes
+1.在IDEA的setting选项卡的plugins目录下
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/5.%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+          <a href="/2021/06/07/mybatis/11.Lombok/">
             <i class="iconfont iconmore" style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/5.%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/mybatis/11.Lombok/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1661,7 +1391,7 @@ SqlSes
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/4.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"></a>
+            <a class="post-title-link" href="/2021/06/07/mybatis/10.mybatis%E8%AF%A6%E7%BB%86%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1674,28 +1404,27 @@ SqlSes
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/4.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/mybatis/10.mybatis%E8%AF%A6%E7%BB%86%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            4.环境配置Mybatis可以配置成适应多种环境
-尽管可以配置多个环境，但每个SQLSessionFactory实例只能选择一种环境学会使用配置使用多套运行环境
+            10.mybatis详细的执行流程
 
-Mybatis默认的事务管理器就是JDBC，连接池：POOLED环境配置
-注
+
+
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/4.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+          <a href="/2021/06/07/mybatis/10.mybatis%E8%AF%A6%E7%BB%86%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/">
             <i class="iconfont iconmore" style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/4.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/mybatis/10.mybatis%E8%AF%A6%E7%BB%86%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1710,7 +1439,7 @@ Mybatis默认的事务管理器就是JDBC，连接池：POOLED环境配置
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/3.CRUD/"></a>
+            <a class="post-title-link" href="/2021/06/07/mybatis/1.Mybatis/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1723,30 +1452,28 @@ Mybatis默认的事务管理器就是JDBC，连接池：POOLED环境配置
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/3.CRUD/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/mybatis/1.Mybatis/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            3.CRUD
-使用SqlSession实现增删改查 
+            1.Mybatis什么是MyBatis
+是一款优秀的持久层框架，  
 
-正常的增删改查使用Map进行增删改查
-假设，我们的实体类，或者数据库中的表，字段或者参数过多，我们应该考虑使用Map
-
-123&lt;insert id=&quot;addUser2&
+持久化
+持久化就是将程序的数据在持久状态和瞬时状态转化的过程。所谓的持久状态和瞬时状态类似内存存储。RAM断电即失，而持久化就是存在磁盘中。使用持久化的意义就是保存一些
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/3.CRUD/">
+          <a href="/2021/06/07/mybatis/1.Mybatis/">
             <i class="iconfont iconmore" style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/3.CRUD/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/mybatis/1.Mybatis/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1761,7 +1488,7 @@ Mybatis默认的事务管理器就是JDBC，连接池：POOLED环境配置
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/2.Mybatis%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/"></a>
+            <a class="post-title-link" href="/2021/06/07/my-test-articlec/">my-test-articlec</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1774,24 +1501,24 @@ Mybatis默认的事务管理器就是JDBC，连接池：POOLED环境配置
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/2.Mybatis%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/my-test-articlec/" class="lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            2.Mybatis的第一个程序pojo1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950    packag
+            
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/2.Mybatis%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/">
+          <a href="/2021/06/07/my-test-articlec/">
             <i class="iconfont iconmore" style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/2.Mybatis%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/my-test-articlec/" class="lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1806,7 +1533,7 @@ Mybatis默认的事务管理器就是JDBC，连接池：POOLED环境配置
             <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/17.Ehcache/"></a>
+            <a class="post-title-link" href="/2021/06/07/hello-world/">Hello World</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1819,74 +1546,24 @@ Mybatis默认的事务管理器就是JDBC，连接池：POOLED环境配置
           <div class="post-img-mobile">
             
               
-              <a href="/2021/06/07/mybatis/17.Ehcache/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+              <a href="/2021/06/07/hello-world/" class="lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
                 background-position: center center;">
               </a>
             
           </div>
           <div class="post-content">
-            17.Ehcache
-EhCache 是一个纯Java的进程内缓存框架，具有快速、精干等特点，是Hibernate中默认CacheProvider。Ehcache是一种广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/06/07/mybatis/17.Ehcache/">
+          <a href="/2021/06/07/hello-world/">
             <i class="iconfont iconmore" style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
         
-          <a href="/2021/06/07/mybatis/17.Ehcache/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
-            background-position: center center;">
-          </a>
-        
-      </div>
-    </article>
-  
-    <article class="post" data-aos="fade-up" style="   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="post-time">2021-06-07</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/2021/06/07/mybatis/16.%E7%BC%93%E5%AD%98/"></a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              
-            </div>
-            <div class="post-categories">
-              
-            </div>
-          </div>
-          <div class="post-img-mobile">
-            
-              
-              <a href="/2021/06/07/mybatis/16.%E7%BC%93%E5%AD%98/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
-                background-position: center center;">
-              </a>
-            
-          </div>
-          <div class="post-content">
-            16.缓存
-缓存，在Mybatis中，我们使用内存资源作为缓存资源。一次查询的结果，给他暂存在一个可以直接取到的地方。我们再次查询的时候就去查询缓存。就不用走数据库了
-
-缓存解决什么问题
-1.减少和数据库的交互次数，减少系统开销，提高系统效
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/2021/06/07/mybatis/16.%E7%BC%93%E5%AD%98/">
-            <i class="iconfont iconmore" style="  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        
-          <a href="/2021/06/07/mybatis/16.%E7%BC%93%E5%AD%98/" class="lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+          <a href="/2021/06/07/hello-world/" class="lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
             background-position: center center;">
           </a>
         
@@ -1896,19 +1573,19 @@ EhCache 是一个纯Java的进程内缓存框架，具有快速、精干等特�
 </section>
 
   <!-- <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav> -->
   <div class="page-nav">
     
+      <a href="/"
+         class="page-nav-pre">
+         <i class="fa fa-angle-left"></i><span class="ml-5">上一页</span>
+      </a>
+    
     <div class="page-info">
-        <div class="page-info-text">1 / 2</div>
+        <div class="page-info-text">2 / 2</div>
     </div>
     
-      <a href="/page/2/"
-         class="page-nav-next">
-          <span class="mr-5">下一页</span><i class="fa fa-angle-right"></i>
-      </a>
-      
   </div>
 
 

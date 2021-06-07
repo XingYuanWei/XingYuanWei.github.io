@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>my-test-articlec | 这是一个Blog</title>
+  <title>这是一个Blog</title>
 
   
     
@@ -693,7 +693,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/1.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -704,7 +704,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['my-test-articlec'],
+              strings: [''],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -737,7 +737,33 @@
         
       </div>
       <div class="post-content">
-        
+        <h1 id="16-缓存"><a href="#16-缓存" class="headerlink" title="16.缓存"></a>16.缓存</h1><blockquote>
+<p>缓存，在Mybatis中，我们使用内存资源作为缓存资源。一次查询的结果，给他暂存在一个可以直接取到的地方。我们再次查询的时候<br>就去查询缓存。就不用走数据库了</p>
+</blockquote>
+<h2 id="缓存解决什么问题"><a href="#缓存解决什么问题" class="headerlink" title="缓存解决什么问题"></a>缓存解决什么问题</h2><blockquote>
+<p>1.减少和数据库的交互次数，减少系统开销，提高系统效率。<br>2.解决了高并发系统的性能问题<br>3.提高系统效率  </p>
+</blockquote>
+<h2 id="Mybatis的缓存"><a href="#Mybatis的缓存" class="headerlink" title="Mybatis的缓存"></a>Mybatis的缓存</h2><blockquote>
+<p>对于高并发问题的解决一般都是读写分离，主从复制。<br>Mybatis可以非常方便地定制和配置缓存，Mybatis系统中默认定义了两级缓存<br><strong>一级缓存</strong>和<strong>二级缓存</strong>，默认情况下只有一级缓存开启(SqlSession 级别的缓存也叫本地缓存）<br>二级缓存需要手动开启和配置，他是基本namespace级别的缓存<br>为了提高扩展性，Mybatis定义了缓存接口Cache，我们可以通过实现Cache接口来实现二级缓存。  、</p>
+</blockquote>
+<h2 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h2><blockquote>
+<p>一级缓存也叫本地缓存<br>1.与数据库同义词会话期间查询到的数据会放在本地缓存中。<br>2.以后如果需要获取相同的数据，直接从缓存中拿，没必要再去查询数据库<br>3.一级缓存默认开启，只在一次SqlSession中有效，也就是拿到连接到关闭连接这个区间段。<br>4.一级缓存就是一个Map</p>
+</blockquote>
+<blockquote>
+<h2 id="缓存失效的情况"><a href="#缓存失效的情况" class="headerlink" title="缓存失效的情况"></a>缓存失效的情况</h2><p>1.查询不同的东西<br>2.增删改查操作，可能会改变原来的数据，所以必定会刷新缓存<br>3.查询不同的Mapper.xml<br>4.手动清理缓存之后也会失效  </p>
+</blockquote>
+<h2 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h2><blockquote>
+<p>二级缓存也叫全局缓存，一级缓存作用域太低了，所以诞生了二级缓存<br>基于namespace级别的缓存，一个名称空间，对应一个二级缓存<br>它的工作机制如下<br>1.一个会话查询一条数据，这个数据就会被放在当前会话中的一级缓存里<br>2.如果当前会话关闭了，这个会话对应的一级缓存就没了。开启之后，会话关闭了，一级缓存中的数据会被保存在二级缓存里<br>3.新的会话查询信息，就可以从二级缓存中获取内容<br>4.不同的mapper查出的数据会放在自己对应的缓存(map)中</p>
+</blockquote>
+<h4 id="1-开启全局缓存"><a href="#1-开启全局缓存" class="headerlink" title="1.开启全局缓存"></a>1.开启全局缓存</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;cacheEnabled&quot;</span><span class="attr">d</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span>    </span><br></pre></td></tr></table></figure>
+<h4 id="2-在需要的Mapper-xml中开启缓存"><a href="#2-在需要的Mapper-xml中开启缓存" class="headerlink" title="2.在需要的Mapper.xml中开启缓存"></a>2.在需要的Mapper.xml中开启缓存</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache</span>  <span class="attr">eviction</span>=<span class="string">&quot;FIFO&quot;</span>  <span class="attr">flushInterval</span>=<span class="string">&quot;60000&quot;</span>  <span class="attr">size</span>=<span class="string">&quot;512&quot;</span>  <span class="attr">readOnly</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个更高级的配置创建了一个 FIFO 缓存，每隔 60 秒刷新，最多可以存储结果对象或列表的 512 个引用，<br>而且返回的对象被认为是只读的，因此对它们进行修改可能会在不同线程中的调用者产生冲突。<br>可用的清除策略有：<br>LRU – 最近最少使用：移除最长时间不被使用的对象。<br>FIFO – 先进先出：按对象进入缓存的顺序来移除它们。<br>SOFT – 软引用：基于垃圾回收器状态和软引用规则移除对象。<br>WEAK – 弱引用：更积极地基于垃圾收集器状态和弱引用规则移除对象。  </p>
+</blockquote>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><blockquote>
+<p>1.对pojo类尽量序列化，否则报错<br>2.所有的数据都会先放在一级缓存<br>3.只有当会话提交，或者关闭的时候，才会提交到二级缓存中  </p>
+</blockquote>
+
       </div>
       
         <div class="copyright">
@@ -747,7 +773,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/06/07/my-test-articlec/" target="_blank" title="my-test-articlec">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/my-test-articlec/</a>
+    <a href="/2021/06/07/mybatis/16.缓存/" target="_blank" title="">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/mybatis/16.缓存/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -770,18 +796,15 @@
     <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/mybatis/1.Mybatis/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/17.Ehcache/" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
         <div></div>
       </div>
       
       <!-- <div class="content">
-        1.Mybatis什么是MyBatis
-是一款优秀的持久层框架，  
-
-持久化
-持久化就是将程序的数据在持久状态和瞬时状
+        17.Ehcache
+EhCache 是一个纯Java的进程内缓存框架，具有快速、精干等特点，是Hibernate中默认
       </div> -->
     </a>
   </div>
@@ -790,16 +813,17 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/hello-world/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/15.mybatis%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Hello World</div>
+        <div></div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        15.mybatis常用标签choose,when,otherwise
+有时候，我们不想使用所有的条件，而只是想从多个条
       </div> -->
     </a>
   </div>

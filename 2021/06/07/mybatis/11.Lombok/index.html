@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>my-test-articlec | 这是一个Blog</title>
+  <title>这是一个Blog</title>
 
   
     
@@ -693,7 +693,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/1.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -704,7 +704,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['my-test-articlec'],
+              strings: [''],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -737,7 +737,32 @@
         
       </div>
       <div class="post-content">
-        
+        <h1 id="11-Lombok"><a href="#11-Lombok" class="headerlink" title="11.Lombok"></a>11.Lombok</h1><blockquote>
+<p>Lombok是一个Java库，一个插件，一个构件工具。只需要在class上添加注解，就不用写setter getter，equals，toString等方法。<br><img "" class="lazyload placeholder" data-original="_v_images/20210517104622827_12847.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>
+</blockquote>
+<h2 id="1-在IDEA的setting选项卡的plugins目录下下载插件"><a href="#1-在IDEA的setting选项卡的plugins目录下下载插件" class="headerlink" title="1.在IDEA的setting选项卡的plugins目录下下载插件"></a>1.在IDEA的setting选项卡的plugins目录下下载插件</h2><h2 id="2、在项目中导入Lombok的jar包"><a href="#2、在项目中导入Lombok的jar包" class="headerlink" title="2、在项目中导入Lombok的jar包"></a>2、在项目中导入Lombok的jar包</h2><blockquote>
+<p>在maven中导入  </p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.16.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、使用Lombok"><a href="#3、使用Lombok" class="headerlink" title="3、使用Lombok"></a>3、使用Lombok</h2><h4 id="val"><a href="#val" class="headerlink" title="val"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/val"><code>val</code></a></h4><p>Finally! Hassle-free final local variables.</p>
+<h4 id="var"><a href="#var" class="headerlink" title="var"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/var"><code>var</code></a></h4><p>Mutably! Hassle-free local variables.</p>
+<h4 id="NonNull"><a href="#NonNull" class="headerlink" title="@NonNull"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/NonNull"><code>@NonNull</code></a></h4><p>or: How I learned to stop worrying and love the NullPointerException.</p>
+<h4 id="Cleanup"><a href="#Cleanup" class="headerlink" title="@Cleanup"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/Cleanup"><code>@Cleanup</code></a></h4><p>Automatic resource management: Call your <code>close()</code> methods safely with no hassle.</p>
+<h4 id="Getter-Setter"><a href="#Getter-Setter" class="headerlink" title="@Getter/@Setter"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/GetterSetter"><code>@Getter/@Setter</code></a></h4><p>Never write <code>public int getFoo() &#123;return foo;&#125;</code> again.</p>
+<h4 id="ToString"><a href="#ToString" class="headerlink" title="@ToString"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/ToString"><code>@ToString</code></a></h4><p>No need to start a debugger to see your fields: Just let lombok generate a <code>toString</code> for you!</p>
+<h4 id="EqualsAndHashCode"><a href="#EqualsAndHashCode" class="headerlink" title="@EqualsAndHashCode"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/EqualsAndHashCode"><code>@EqualsAndHashCode</code></a></h4><p>Equality made easy: Generates <code>hashCode</code> and <code>equals</code> implementations from the fields of your object..</p>
+<h4 id="NoArgsConstructor-RequiredArgsConstructor-and-AllArgsConstructor"><a href="#NoArgsConstructor-RequiredArgsConstructor-and-AllArgsConstructor" class="headerlink" title="@NoArgsConstructor, @RequiredArgsConstructor and @AllArgsConstructor"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/constructor"><code>@NoArgsConstructor, @RequiredArgsConstructor and @AllArgsConstructor</code></a></h4><p>Constructors made to order: Generates constructors that take no arguments, one argument per final / non-nullfield, or one argument for every field.</p>
+<h4 id="Data"><a href="#Data" class="headerlink" title="@Data"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/Data"><code>@Data</code></a></h4><p>All together now: A shortcut for <code>@ToString</code>, <code>@EqualsAndHashCode</code>, <code>@Getter</code> on all fields, and <code>@Setter</code> on all non-final fields, and <code>@RequiredArgsConstructor</code>!</p>
+<h4 id="Value"><a href="#Value" class="headerlink" title="@Value"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/Value"><code>@Value</code></a></h4><p>Immutable classes made very easy.</p>
+<h4 id="Builder"><a href="#Builder" class="headerlink" title="@Builder"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/Builder"><code>@Builder</code></a></h4><p>… and Bob’s your uncle: No-hassle fancy-pants APIs for object creation!</p>
+<h4 id="SneakyThrows"><a href="#SneakyThrows" class="headerlink" title="@SneakyThrows"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/SneakyThrows"><code>@SneakyThrows</code></a></h4><p>To boldly throw checked exceptions where no one has thrown them before!</p>
+<h4 id="Synchronized"><a href="#Synchronized" class="headerlink" title="@Synchronized"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/Synchronized"><code>@Synchronized</code></a></h4><p><code>synchronized</code> done right: Don’t expose your locks.</p>
+<h4 id="With"><a href="#With" class="headerlink" title="@With"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/With"><code>@With</code></a></h4><p>Immutable ‘setters’ - methods that create a clone but with one changed field.</p>
+<h4 id="Getter-lazy-true"><a href="#Getter-lazy-true" class="headerlink" title="@Getter(lazy=true)"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/GetterLazy"><code>@Getter(lazy=true)</code></a></h4><p>Laziness is a virtue!</p>
+<h4 id="Log"><a href="#Log" class="headerlink" title="@Log"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/log"><code>@Log</code></a></h4><p>Captain’s Log, stardate 24435.7: “What was that line again?”</p>
+<h4 id="experimental"><a href="#experimental" class="headerlink" title="experimental"></a><a target="_blank" rel="noopener" href="https://projectlombok.org/features/experimental/all"><code>experimental</code></a></h4><p>Head to the lab: The new stuff we’re working on.</p>
+
       </div>
       
         <div class="copyright">
@@ -747,7 +772,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/06/07/my-test-articlec/" target="_blank" title="my-test-articlec">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/my-test-articlec/</a>
+    <a href="/2021/06/07/mybatis/11.Lombok/" target="_blank" title="">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/mybatis/11.Lombok/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -770,18 +795,17 @@
     <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/mybatis/1.Mybatis/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/12.%E5%A4%9A%E5%AF%B9%E4%B8%80%E5%A4%84%E7%90%86/" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
         <div></div>
       </div>
       
       <!-- <div class="content">
-        1.Mybatis什么是MyBatis
-是一款优秀的持久层框架，  
+        12.多对一处理
+创建mysql的表
 
-持久化
-持久化就是将程序的数据在持久状态和瞬时状
+1234567891011121314151617181920212223sho
       </div> -->
     </a>
   </div>
@@ -790,16 +814,19 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/hello-world/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/10.mybatis%E8%AF%A6%E7%BB%86%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Hello World</div>
+        <div></div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        10.mybatis详细的执行流程
+
+
+
       </div> -->
     </a>
   </div>

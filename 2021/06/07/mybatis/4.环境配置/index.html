@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>my-test-articlec | 这是一个Blog</title>
+  <title>这是一个Blog</title>
 
   
     
@@ -693,7 +693,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/1.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -704,7 +704,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['my-test-articlec'],
+              strings: [''],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -737,7 +737,47 @@
         
       </div>
       <div class="post-content">
-        
+        <h1 id="4-环境配置"><a href="#4-环境配置" class="headerlink" title="4.环境配置"></a>4.环境配置</h1><h2 id="Mybatis可以配置成适应多种环境"><a href="#Mybatis可以配置成适应多种环境" class="headerlink" title="Mybatis可以配置成适应多种环境"></a>Mybatis可以配置成适应多种环境</h2><blockquote>
+<p>尽管可以配置多个环境，但每个SQLSessionFactory实例只能选择一种环境<br>学会使用配置使用多套运行环境</p>
+</blockquote>
+<h2 id="Mybatis默认的事务管理器就是JDBC，连接池：POOLED"><a href="#Mybatis默认的事务管理器就是JDBC，连接池：POOLED" class="headerlink" title="Mybatis默认的事务管理器就是JDBC，连接池：POOLED"></a>Mybatis默认的事务管理器就是JDBC，连接池：POOLED</h2><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><blockquote>
+<p><strong>注意环境配置是有顺序要求的</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">configuration（配置）</span><br><span class="line">properties（属性）</span><br><span class="line">settings（设置）</span><br><span class="line">typeAliases（类型别名）</span><br><span class="line">typeHandlers（类型处理器）</span><br><span class="line">objectFactory（对象工厂）</span><br><span class="line">plugins（插件）</span><br><span class="line">environments（环境配置）</span><br><span class="line">environment（环境变量）</span><br><span class="line">transactionManager（事务管理器）</span><br><span class="line">dataSource（数据源）</span><br><span class="line">databaseIdProvider（数据库厂商标识）</span><br><span class="line">mappers（映射器）</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-属性-Pproperties"><a href="#1-属性-Pproperties" class="headerlink" title="1.属性(Pproperties)"></a>1.属性(Pproperties)</h2><blockquote>
+<p>我们可以通过properties属性来实现引用配置文件，这些属性都是课外部配置且动态替换的，既可以在典型的java属性文件中配置<br>亦可通过properties元素的子元素来传递。</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;db.properties &quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;11&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以直接引入外部文件<br>可以在其中增加一些属性配置<br>如果两个文件有同一个字段，优先使用外部配置文件</p>
+</blockquote>
+<h2 id="2-typeAliases（类型别名）"><a href="#2-typeAliases（类型别名）" class="headerlink" title="2.typeAliases（类型别名）"></a>2.typeAliases（类型别名）</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">type</span>=<span class="string">&quot;pojo.User&quot;</span> <span class="attr">alias</span>=<span class="string">&quot;user&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>也可以指定一个包名，Mybatis会在包名下面搜索需要的Java  Bean， 扫描实体类的包，他的默认名就为这个类的类名</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--&lt;typeAlias type=&quot;pojo.User&quot; alias=&quot;user&quot;/&gt;--&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;pojo&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img "" class="lazyload placeholder" data-original="_v_images/20210511145823820_25024.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>
+<blockquote>
+<p>使用这个user这个名字就是“包别名”方式下的默认别名。如果在Java Bean下使用了@Alias注解，则可以自定义别名<br><img "" class="lazyload placeholder" data-original="_v_images/20210511151617483_30569.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>
+</blockquote>
+<h2 id="3-其他配置"><a href="#3-其他配置" class="headerlink" title="3.其他配置"></a>3.其他配置</h2><blockquote>
+<p>typeHandlers（类型处理器）<br>objectFactory(对象工厂）<br>plugins插件<br>    1. mybatis-generator-core<br>    2. mybatis-plus<br>    3. 通用mapper</p>
+</blockquote>
+<h2 id="4-印射器（mappers"><a href="#4-印射器（mappers" class="headerlink" title="4.印射器（mappers)"></a>4.印射器（mappers)</h2><p>MapperRegistry：注册绑定我们的Mapper文件</p>
+<h4 id="方式一-使用resource"><a href="#方式一-使用resource" class="headerlink" title="方式一 使用resource"></a>方式一 使用resource</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;UserMapper.xml&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>每个mapper都在在mybatis-config.xml配置文件中注册</p>
+</blockquote>
+<h4 id="方式二-使用class文件绑定注册（使用印射器接口实现类的完全限定类名"><a href="#方式二-使用class文件绑定注册（使用印射器接口实现类的完全限定类名" class="headerlink" title="方式二 使用class文件绑定注册（使用印射器接口实现类的完全限定类名)"></a>方式二 使用class文件绑定注册（使用印射器接口实现类的完全限定类名)</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;dao.UserMapper&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样的方式下，UserMapper.xml文件必须与UserMapper<strong>接口同名，且在同一个包下</strong></p>
+</blockquote>
+<h2 id="方式三-使用扫描包进行注入绑定"><a href="#方式三-使用扫描包进行注入绑定" class="headerlink" title="方式三 使用扫描包进行注入绑定"></a>方式三 使用扫描包进行注入绑定</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;mapper class=&quot;dao.UserMapper&quot;/&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;dao&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将包“dao”下的所有接口都导入，并且这个对口要有对应的mapper，也要在同一个包下<br><img "" class="lazyload placeholder" data-original="_v_images/20210512160408631_13373.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>
+</blockquote>
+
       </div>
       
         <div class="copyright">
@@ -747,7 +787,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/06/07/my-test-articlec/" target="_blank" title="my-test-articlec">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/my-test-articlec/</a>
+    <a href="/2021/06/07/mybatis/4.环境配置/" target="_blank" title="">https://github.com/XingYuanWei/XingYuanWei.github.io/2021/06/07/mybatis/4.环境配置/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -770,18 +810,17 @@
     <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/mybatis/1.Mybatis/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/5.%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
         <div></div>
       </div>
       
       <!-- <div class="content">
-        1.Mybatis什么是MyBatis
-是一款优秀的持久层框架，  
+        作用域和生命周期
+生命周期和作用域是至关重要的，因为错误的使用会导致非常严重的并发问题。
 
-持久化
-持久化就是将程序的数据在持久状态和瞬时状
+SqlSessionFact
       </div> -->
     </a>
   </div>
@@ -790,16 +829,20 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/06/07/hello-world/" class="post-nav-link">
+    <a href="/2021/06/07/mybatis/3.CRUD/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Hello World</div>
+        <div></div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        3.CRUD
+使用SqlSession实现增删改查 
+
+正常的增删改查使用Map进行增删改查
+假设，我们的实体类，或者数
       </div> -->
     </a>
   </div>
