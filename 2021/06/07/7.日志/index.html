@@ -24,7 +24,7 @@
 
   
     <script>
-        var themeModelId = '';
+        var themeModelId = '2';
         if (themeModelId) {
             localStorage.setItem('modelId', themeModelId);
         }
@@ -741,7 +741,7 @@
 <h2 id="日志工厂"><a href="#日志工厂" class="headerlink" title="日志工厂"></a>日志工厂</h2><p>如果数据操作出现了异常，我们需要排错，日志就是最好的一个助手。<br>logImpl，指定 MyBatis 所用日志的具体实现，未指定时将自动查找。<br>SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING<br>在Mybatis中具体使用哪个日志实现，在设置中设定。<br>STDOUT_LOGGING标准日志输出。</p>
 </blockquote>
 <h2 id="配置日志"><a href="#配置日志" class="headerlink" title="配置日志"></a>配置日志</h2><blockquote>
-<p><setting>中配置日志。在mybatis-config中配置这个标签。另外这个<setting>配置要写到第三个位置。</p>
+<p><setting>中配置日志。在mybatis-config中配置这个标签。另外这个<setting>配置要写到第三个位置。</setting></setting></p>
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;STDOUT_LOGGING&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
